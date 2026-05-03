@@ -30,6 +30,7 @@ dev = [
 ]
 
 docs = [
+    "mkdocstrings[python]",
     "zensical==0.0.37", # WHY: Pinning to known working version.
 ]
 
@@ -100,6 +101,7 @@ force-sort-within-sections = true
 "src/**/_version.py" = ["ALL"]
 "tests/**/*.py" = ["D", "B018", "B011", "S101"]
 "src/**/py.typed" = ["ALL"]
+"src/ptat_sim/generator.py" = ["S311"] # WHY: We want a seeded, reproducible, non-cryptographic RNG.
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"
