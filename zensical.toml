@@ -1,0 +1,34 @@
+# ============================================================
+# zensical.toml (Zensical configuration file)
+# ============================================================
+# WHY: Centralizes project documentation configuration.
+
+[project]
+site_name = "ptat-sim"
+site_url = "https://adaptive-interfaces.github.io/ptat-sim/"
+repo_url = "https://github.com/adaptive-interfaces/ptat-sim"
+repo_name = "adaptive-interfaces/ptat-sim"
+site_description = "Synthetic PTAT sensor simulation engine and readings interface"
+docs_dir = "docs"
+site_dir = "site"
+edit_uri = "edit/main/docs/"
+
+[project.extra]
+social = [
+    {icon = "fontawesome/brands/github", link = "https://github.com/adaptive-interfaces/ptat-sim"},
+]
+
+[project.plugins.search]
+lang = "en"
+
+[project.theme]
+features = [
+    "navigation.tracking",
+    "navigation.expand",
+    "navigation.path",
+    "navigation.prune",
+    "navigation.indexes",
+    "toc.follow",
+    "toc.integrate",
+    "navigation.top",
+]

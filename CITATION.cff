@@ -1,0 +1,47 @@
+# ============================================================
+# CITATION.cff (How to cite this project)
+# ============================================================
+
+cff-version: "1.2.0"
+type: software
+
+title: "ptat-sim: Synthetic PTAT Sensor Simulation Engine"
+version: 0.1.0
+date-released: 2026-05-03
+
+authors:
+  - family-names: Case
+    given-names: Denise M.
+    orcid: "https://orcid.org/0000-0001-6165-7389"
+    affiliation: >-
+      Northwest Missouri State University,
+      School of Computer Science and Information Systems,
+      Maryville, MO, USA
+
+repository-code: "https://github.com/adaptive-interfaces/ptat-sim"
+url: "https://github.com/adaptive-interfaces/ptat-sim"
+
+license: MIT
+
+abstract: >
+  Deterministic synthetic PTAT (Proportional To Absolute Temperature)
+  sensor data generator with a stable typed interface contract.
+  Provides five named scenario kinds (clean, drift, spike, dropout,
+  multi-sensor divergence) for use in agent evaluation, task assignment,
+  and test program development within the Adaptive Interfaces ecosystem.
+
+keywords:
+  - ptat
+  - sensor-simulation
+  - anomaly-detection
+  - deterministic-simulation
+  - adaptive-interfaces
+  - agent-evaluation
+  - python
+  - uv
+  - ruff
+  - pyright
+  - hatchling
+  - zensical
+
+message: "If you use this work, please cite it using the metadata in this file."

@@ -1,0 +1,35 @@
+# ============================================================
+# data_sets.toml (Dataset generation configuration)
+# ============================================================
+
+[defaults]
+batch_size = 1000
+num_sensors = 1
+sampling_rate_hz = 10
+base_temperature_celsius = 25.0
+temperature_step_celsius = 0.02
+nominal_frequency_at_25c_hz = 100000.0
+sensitivity_hz_per_kelvin = 512.0
+noise_stddev_hz = 8.0
+seed = 42
+
+[[datasets]]
+name = "clean_batch"
+scenario = "clean"
+
+[[datasets]]
+name = "drift_batch"
+scenario = "drift"
+
+[[datasets]]
+name = "spike_batch"
+scenario = "spike"
+
+[[datasets]]
+name = "dropout_batch"
+scenario = "dropout"
+
+[[datasets]]
+name = "multi_sensor_batch"
+scenario = "multi_sensor_divergence"
+num_sensors = 3

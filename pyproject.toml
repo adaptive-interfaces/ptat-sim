@@ -1,0 +1,124 @@
+# ============================================================
+# pyproject.toml (Python project configuration)
+# ============================================================
+# Updated: 2026-05-03
+# REQ.PYTHON: Python projects MUST include pyproject.toml as the single source of truth.
+# WHY: Centralizes project configuration.
+# CUSTOM: Update identity and build tool src folders.
+
+# ============================================================
+# SECTION 1: PROJECT IDENTITY (name, version, CUSTOM dependencies)
+# ============================================================
+
+[project]
+name = "ptat-sim" # Package distribution name (lowercase and dashes).
+readme = "README.md"
+requires-python = ">=3.15"
+dynamic = ["version"] # WHY: Version is computed from git tags at build time.
+
+dependencies = []
+
+[project.optional-dependencies]
+# WHY: Optional dependency groups keep the core install clean and focused.
+dev = [
+    "build",
+    "pre-commit",
+    "pyright",
+    "pytest",
+    "pytest-cov",
+    "ruff",
+]
+
+docs = [
+    "zensical==0.0.37", # WHY: Pinning to known working version.
+]
+
+[project.scripts]
+ptat-sim = "ptat_sim.cli:main"
+
+# ============================================================
+# SECTION 2: TOOL CONFIGURATION (Professional basics)
+# ============================================================
+
+[tool.pyright]
+include = ["src", "tests"]
+extraPaths = ["src", "."]
+exclude = ["**/node_modules", "**/.*", ".venv", "**/__pycache__", "dist", "build"]
+pythonVersion = "3.15"
+reportMissingTypeStubs = "none"
+reportMissingImports = "warning"
+reportPrivateUsage = "none"
+typeCheckingMode = "basic"
+
+[[tool.pyright.executionEnvironments]]
+root = "tests"
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+testpaths = ["tests"]
+addopts = " --cov=ptat_sim --cov-report=term-missing"
+
+[tool.ruff]
+exclude = [
+    ".eggs",
+    "*.egg-info",
+    ".ruff_cache",
+    ".venv",
+    "__pycache__",
+    "build",
+    "dist",
+    "site",
+]
+line-length = 88
+preview = false
+target-version = "py313"
+unsafe-fixes = false
+
+[tool.ruff.format]
+indent-style = "space"
+line-ending = "auto"
+quote-style = "preserve"
+
+[tool.ruff.lint]
+select = [
+    "E", "F", "W", "I", "UP", "B",
+    "PTH", "C4", "SIM", "RET",
+    "D", "S",
+]
+ignore = [
+    "E501",
+    "D203",
+    "D213",
+    "S101",
+]
+
+[tool.ruff.lint.isort]
+force-sort-within-sections = true
+
+[tool.ruff.lint.per-file-ignores]
+"src/**/__init__.py" = ["F401"]
+"src/**/_version.py" = ["ALL"]
+"tests/**/*.py" = ["D", "B018", "B011", "S101"]
+"src/**/py.typed" = ["ALL"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+# ============================================================
+# SECTION 3: BUILD SYSTEM
+# ============================================================
+
+[build-system]
+build-backend = "hatchling.build"
+requires = ["hatchling", "hatch-vcs"]
+
+[tool.hatch.build.hooks.vcs]
+version-file = "src/ptat_sim/_version.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ptat_sim"]
+
+[tool.hatch.version]
+source = "vcs"
+fallback-version = "0.1.0"
+tag-pattern = "^(?:v)?(?P<version>\\d+\\.\\d+\\.\\d+)$"
