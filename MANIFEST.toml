@@ -1,0 +1,142 @@
+# ============================================================
+# MANIFEST.toml (Repository Declaration)
+# ptat-sim
+# ============================================================
+
+schema = "adaptive-interfaces-manifest-1"
+schema_url = "https://github.com/adaptive-interfaces/.github/blob/main/schemas/adaptive-interfaces-manifest-1.md"
+# NOTE: [package], [docs], [ci], [release], [agent], [conventions] are proposed
+# extensions pending adaptive-interfaces-manifest-2.
+# See DECISIONS.md D-007.
+
+# === Identity ===
+
+[meta]
+purpose = "Synthetic PTAT sensor simulation engine and stable readings interface for agent task assignment."
+
+[repo]
+name = "ptat-sim"
+org = "adaptive-interfaces"
+class = "simulation"
+kind = "library"
+status = "active"
+since = "2026"
+visibility = "public"
+# WHY: Drives whether CITATION.cff and licensing matter from day one,
+# and whether CI runs on push/PR for external contributors.
+summary = "Deterministic PTAT sensor data generator with typed interface contract for use in agent evaluation and test assignment."
+
+[layer]
+space = "domain-simulation"
+role = "interface-and-engine"
+
+# === Dependencies ===
+
+[depends]
+required = [
+  "adaptive-conformance-specification",
+]
+optional = []
+
+# === Provided artifacts ===
+
+[provides]
+artifacts = [
+  "PTATReading interface contract",
+  "SensorReading dataclass",
+  "GeneratorConfig dataclass",
+  "ProcessorConfig dataclass",
+  "AnomalyFinding dataclass",
+  "BatchResult dataclass",
+  "generate_batch function",
+  "data_maker CLI",
+]
+
+# === Scope ===
+
+[scope]
+includes = [
+  "PTAT readings interface contract",
+  "synthetic sensor data generation for five named scenarios",
+  "anomaly detection processor",
+  "TOML-driven batch CSV generation",
+  "agent operating guide (SKILL.md)",
+]
+
+excludes = [
+  "live sensor integration",
+  "hardware interfaces",
+  "visualization or dashboard tooling",
+  "downstream test programs",
+  "analysis applications",
+]
+
+# === Package (proposed: adaptive-interfaces-manifest-2) ===
+
+[package]
+python_name = "ptat_sim"
+# WHY: Drives src/ layout, --cov= pytest target, hatch packages, _version.py path.
+cli = true
+cli_entry = "ptat_sim.cli:main"
+cli_description = "Generate synthetic PTAT sensor datasets from TOML config"
+# WHY: cli=true drives [project.scripts] in pyproject.toml and scaffolds
+# cli.py, __init__.py, and __main__.py boilerplate.
+
+# === Docs (proposed: adaptive-interfaces-manifest-2) ===
+
+[docs]
+enabled = true
+tool = "zensical"
+deploy = true
+# WHY: enabled=true drives zensical.toml, docs build step in CI.
+# deploy=true drives deploy-zensical.yml workflow for GitHub Pages.
+
+# === CI (proposed: adaptive-interfaces-manifest-2) ===
+
+[ci]
+link_check = true
+dependabot = true
+actionlint = false
+# WHY: link_check=true drives links.yml workflow.
+# dependabot=true drives dependabot.yml (GitHub Actions updates only).
+# actionlint=false — org-level only, not per-repo.
+
+# === Release (proposed: adaptive-interfaces-manifest-2) ===
+
+[release]
+validate_step = "uv run ptat-sim"
+# WHY: Repo-specific CLI invocation run in CI (E1) and release procedure (Task 2).
+# Proves the entrypoint works end-to-end with default config.
+# Convention steps (pre-commit, pyright, pytest) are always run; this is what is extra.
+changelog_sections = [
+  "Notes on versioning and releases",
+  "Release Procedure",
+  "Links",
+]
+# WHY: These sections are appended after version history in every CHANGELOG.
+# An agent scaffolding CHANGELOG.md must include them, derived from the
+# conventions source and adapted for this repo's release steps.
+
+# === Agent (proposed: adaptive-interfaces-manifest-2) ===
+
+[agent]
+conformance = "https://github.com/adaptive-interfaces/adaptive-conformance-specification"
+# WHY: Agents working in this repo MUST apply ACS observe-infer-conform
+# before generating any artifact. Behavioral directive, not just a dependency.
+skill = "SKILL.md"
+# WHY: SKILL.md is the domain operating guide.
+# Authored after interface is stable (see DECISIONS.md D-003).
+
+# === Conventions (proposed: adaptive-interfaces-manifest-2) ===
+
+[conventions]
+source = "https://github.com/structural-explainability/se-constitution"
+# WHY: Conformance source for repo scaffold and convention files.
+# An agent applies ACS against this source to determine what to copy
+# verbatim vs adapt for this repo's identity.
+
+# === Citation ===
+
+[citation]
+cff = "CITATION.cff"
+preferred = "CITATION.cff"
