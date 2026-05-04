@@ -48,16 +48,16 @@ Read `MANIFEST.toml` `[release].validate_step` for the repo-specific step.
 
 ```shell
 uvx pre-commit run --all-files
+uv run ptat-sim
 uv run python -m pyright
 uv run python -m pytest
 uv run python -m zensical build
-uv run ptat-sim
 ```
 
 ### Task 3. Commit, tag, push
 
 ```shell
-git add .
+git add -A
 git commit -m "Release X.Y.Z"
 git tag vX.Y.Z -m "X.Y.Z"
 git push origin main
