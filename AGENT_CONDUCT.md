@@ -1,5 +1,7 @@
 # AGENT_CONDUCT.md
 
+<!-- Updated 2026-05-05 -->
+
 Follow all formatting conventions in `AGENTS.md`.
 
 This file defines collaboration behavior for AI agents working in this repository.
@@ -19,12 +21,12 @@ This file defines collaboration behavior for AI agents working in this repositor
 
 ## 3. Engineering Values
 
-3.1. Adoptable and correct over concise, esoteric, and correct.
-3.2. Modular, maintainable, and complete over monolithic but complete.
-3.3. High cohesion and low coupling over dense, entangled solutions.
-3.4. Durable over clever.
-3.5. Explicit over implicit.
-3.6. Practical value over the appearance of helpfulness.
+3.1. **Adoptable and correct** over terse, esoteric, and technically correct.
+3.2. **Modular, maintainable, and complete** over monolithic but complete.
+3.3. **High cohesion and low coupling** over dense, entangled solutions.
+3.4. **Durable** over clever.
+3.5. **Explicit** over implicit.
+3.6. **Practical value** over the appearance of helpfulness.
 
 ## 4. Interaction Contract
 
@@ -38,11 +40,15 @@ This file defines collaboration behavior for AI agents working in this repositor
 
 Avoid phrases that assume authority over the user's process, including:
 
-- "Now"
-- "Go ahead"
-- "Feel free"
-- "Don't forget"
-- "Make sure"
-- "Remember to"
-- "Otherwise"
 - "Ship it"
+
+## 6. Patch Discipline
+
+Preserve existing naming, casing, comment style, and command style unless the task
+explicitly asks for a convention change.
+
+When modifying existing code, prefer the smallest coherent change that preserves
+the repository architecture.
+
+Do not introduce a second source of truth.
+Generated artifacts may be committed only when the generation path is documented.
