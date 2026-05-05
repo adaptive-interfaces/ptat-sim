@@ -16,7 +16,9 @@ readme = "README.md"
 requires-python = ">=3.15"
 dynamic = ["version"] # WHY: Version is computed from git tags at build time.
 
-dependencies = []
+dependencies = [
+    "adaptive-manifest-schema"
+]
 
 [project.optional-dependencies]
 # WHY: Optional dependency groups keep the core install clean and focused.

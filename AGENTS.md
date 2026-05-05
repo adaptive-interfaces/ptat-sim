@@ -50,7 +50,7 @@ uv run python -m ruff check . --fix
 Run tests:
 
 ```shell
-uv run pytest
+uv run python -m pytest
 ```
 
 Generate datasets:
@@ -76,12 +76,10 @@ Keep line length to 100 characters wherever possible.
 
 ## Agent Task Assignment
 
-Before generating any test program or analysis tool that uses this API:
+Before generating any content or consuming code:
 
 1. Read `SKILL.md`; it is the operating guide, not optional documentation.
-2. Read `DECISIONS.md`; it explains why the interface is shaped the way it is.
-3. Confirm understanding of the five `ScenarioKind` values and their behavioral contracts.
-4. Confirm `frequency_hz: None` handling before writing any reading consumer.
+2. Read `DECISIONS.md`; it explains why the project is the way it is.
 
 ## pre-commit
 

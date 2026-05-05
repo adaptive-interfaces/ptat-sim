@@ -3,11 +3,8 @@
 # ptat-sim
 # ============================================================
 
-schema = "adaptive-interfaces-manifest-1"
-schema_url = "https://github.com/adaptive-interfaces/.github/blob/main/schemas/adaptive-interfaces-manifest-1.md"
-# NOTE: [package], [docs], [ci], [release], [agent], [conventions] are proposed
-# extensions pending adaptive-interfaces-manifest-2.
-# See DECISIONS.md D-007.
+schema = "adaptive-interfaces-manifest-schema"
+schema_url = "https://github.com/adaptive-interfaces/adaptive-manifest-schema/blob/main/manifest-schema.toml"
 
 # === Identity ===
 
@@ -71,7 +68,7 @@ excludes = [
   "analysis applications",
 ]
 
-# === Package (proposed: adaptive-interfaces-manifest-2) ===
+# === Package ===
 
 [package]
 python_name = "ptat_sim"
@@ -82,7 +79,7 @@ cli_description = "Generate synthetic PTAT sensor datasets from TOML config"
 # WHY: cli=true drives [project.scripts] in pyproject.toml and scaffolds
 # cli.py, __init__.py, and __main__.py boilerplate.
 
-# === Docs (proposed: adaptive-interfaces-manifest-2) ===
+# === Docs ===
 
 [docs]
 enabled = true
@@ -91,7 +88,7 @@ deploy = true
 # WHY: enabled=true drives zensical.toml, docs build step in CI.
 # deploy=true drives deploy-zensical.yml workflow for GitHub Pages.
 
-# === CI (proposed: adaptive-interfaces-manifest-2) ===
+# === CI ===
 
 [ci]
 link_check = true
@@ -99,9 +96,9 @@ dependabot = true
 actionlint = false
 # WHY: link_check=true drives links.yml workflow.
 # dependabot=true drives dependabot.yml (GitHub Actions updates only).
-# actionlint=false — org-level only, not per-repo.
+# actionlint=false org-level only, not per-repo.
 
-# === Release (proposed: adaptive-interfaces-manifest-2) ===
+# === Release ===
 
 [release]
 validate_step = "uv run ptat-sim"
@@ -117,17 +114,30 @@ changelog_sections = [
 # An agent scaffolding CHANGELOG.md must include them, derived from the
 # conventions source and adapted for this repo's release steps.
 
-# === Agent (proposed: adaptive-interfaces-manifest-2) ===
+# === Agent ===
 
 [agent]
 conformance = "https://github.com/adaptive-interfaces/adaptive-conformance-specification"
 # WHY: Agents working in this repo MUST apply ACS observe-infer-conform
 # before generating any artifact. Behavioral directive, not just a dependency.
+
 skill = "SKILL.md"
 # WHY: SKILL.md is the domain operating guide.
-# Authored after interface is stable (see DECISIONS.md D-003).
+# Authored after interface is stable.
 
-# === Conventions (proposed: adaptive-interfaces-manifest-2) ===
+permissions = "read-generate"
+# WHY: Agents read files and produce artifacts. No direct writes.
+
+checkpoint = "human-review-required"
+# WHY: All agent output reviewed by a human before applying.
+
+scope = "this-repo-only"
+# WHY: Agent operates only within this repository.
+
+stop_on_ambiguity = true
+# WHY: Agent stops and reports rather than guessing when scope is unclear.
+
+# === Conventions ===
 
 [conventions]
 source = "https://github.com/structural-explainability/se-constitution"

@@ -79,3 +79,5 @@ git push origin v0.1.0
 ## Links
 
 [Unreleased]: https://github.com/adaptive-interfaces/ptat-sim/compare/HEAD
+
+<!-- markdownlint-enable MD024 -->

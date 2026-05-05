@@ -1,5 +1,7 @@
 # ptat-sim
 
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 Synthetic PTAT sensor simulation engine and stable readings interface.
 
 Part of the [Adaptive Interfaces](https://github.com/adaptive-interfaces) ecosystem.
@@ -37,6 +39,15 @@ PTAT was chosen as the reference domain for agent task assignment because:
 
 This PTAT profile makes it hard to fake understanding.
 An agent that doesn't read SKILL.md will get it wrong in detectable ways.
+
+## Artifacts for Downstream Use
+
+```text
+ptat-sim/
+  data/*.csv
+  data/data_sets.toml
+  data/ptat-sim-output.lock
+```
 
 ## Downstream Clients
 
@@ -76,20 +87,26 @@ the `SensorReading` interface defined here.
 ## Quickstart
 
 ```shell
+# reset uv cache only after suspected cache corruption or strange dependency errors
+# uv cache clean
+
 uv self update
 uv python pin 3.15
 uv sync --extra dev --extra docs --upgrade
 
 uvx pre-commit install
 
-uv run python -m ptat_sim.data_maker
-uv run ptat-sim # using CLI
-
 git add -A
 uvx pre-commit run --all-files
 # repeat if changes were made
 git add -A
 uvx pre-commit run --all-files
+
+# validate MANIFEST.toml
+uv run adaptive-manifest validate --strict
+
+# generate data/*.csv from `data/data_sets.toml`
+uv run ptat-sim
 
 # do chores
 uv run python -m pyright
