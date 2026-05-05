@@ -1,6 +1,14 @@
 # ptat-sim
 
+[![Adaptive Interfaces](https://img.shields.io/badge/adaptive--interfaces-schema-blue?logo=github)](https://github.com/adaptive-interfaces)
+[![Docs Site](https://img.shields.io/badge/docs-site-blue?logo=github)](https://adaptive-interfaces.github.io/ptat-sim/)
+[![Repo](https://img.shields.io/badge/repo-GitHub-black?logo=github)](https://github.com/adaptive-interfaces/ptat-sim)
+[![Python 3.15+](https://img.shields.io/badge/python-3.15%2B-blue?logo=python)](https://github.com/adaptive-interfaces/ptat-sim/blob/main/pyproject.toml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
+[![CI](https://github.com/adaptive-interfaces/ptat-sim/actions/workflows/ci-python-zensical.yml/badge.svg?branch=main)](https://github.com/adaptive-interfaces/ptat-sim/actions/workflows/ci-python-zensical.yml)
+[![Docs](https://github.com/adaptive-interfaces/ptat-sim/actions/workflows/deploy-zensical.yml/badge.svg?branch=main)](https://github.com/adaptive-interfaces/ptat-sim/actions/workflows/deploy-zensical.yml)
+[![Links](https://github.com/adaptive-interfaces/ptat-sim/actions/workflows/links.yml/badge.svg?branch=main)](https://github.com/adaptive-interfaces/ptat-sim/actions/workflows/links.yml)
 
 Synthetic PTAT sensor simulation engine and stable readings interface.
 
